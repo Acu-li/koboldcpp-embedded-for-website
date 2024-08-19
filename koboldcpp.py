@@ -3938,7 +3938,7 @@ def main(launch_args,start_server=True):
     if args.model_param and args.model_param!="":
         newmdldisplayname = os.path.basename(args.model_param)
         newmdldisplayname = os.path.splitext(newmdldisplayname)[0]
-        friendlymodelname = "koboldcpp/" + sanitize_string(newmdldisplayname)
+        friendlymodelname = "Acu.li/" + sanitize_string(newmdldisplayname)
 
     # horde worker settings
     global maxhordelen, maxhordectx, showdebug
@@ -3946,8 +3946,8 @@ def main(launch_args,start_server=True):
         friendlymodelname = args.hordemodelname
         if args.debugmode == 1:
             friendlymodelname = "debug-" + friendlymodelname
-        if not friendlymodelname.startswith("koboldcpp/"):
-            friendlymodelname = "koboldcpp/" + friendlymodelname
+        if not friendlymodelname.startswith("Acu.li/"):
+            friendlymodelname = "Acu.li/" + friendlymodelname
     if (args.hordemodelname and args.hordemodelname!="") or (args.hordeworkername and args.hordeworkername!="") or (args.hordekey and args.hordekey!=""):
         if args.debugmode == 0:
             args.debugmode = -1
