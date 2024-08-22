@@ -15,14 +15,29 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
+      - name: Set up Python
+        id: setup_python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Create virtual environment
+        id: create_venv
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+
       - name: Install dependencies
         id: install_dependencies
         run: |
+          source venv/bin/activate
+          python3 -m pip install --upgrade pip
           python3 -m pip install setuptools py2app customtkinter tk
 
       - name: Build
         id: make_build
         run: |
+          source venv/bin/activate
           python3 setup.py py2app
 
       - name: Save artifact
