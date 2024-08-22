@@ -1,4 +1,4 @@
-name: Koboldcpp Linux
+name: Koboldcpp Mac x86
 
 on: workflow_dispatch
 env:
@@ -6,8 +6,8 @@ env:
   NOAVX2: 1
 
 jobs:
-  linux:
-    runs-on: ubuntu-20.04
+  osx:
+    runs-on: macos-latest
     steps:
       - name: Clone
         id: checkout
@@ -18,16 +18,15 @@ jobs:
       - name: Dependencies
         id: depends
         run: |
-          sudo apt-get update
-          sudo apt-get install git curl bzip2
+          pip install customtkinter py2app tk
 
       - name: Build
         id: make_build
         run: |
-          ./koboldcpp.sh dist
+          python3 setup.py py2app
 
       - name: Save artifact
         uses: actions/upload-artifact@v3
         with:
-          name: kcpp_linux_binary
+          name: kcpp_mac_app_x86
           path: dist/
