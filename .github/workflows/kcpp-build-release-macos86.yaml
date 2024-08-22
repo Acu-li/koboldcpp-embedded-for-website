@@ -15,10 +15,11 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: Dependencies
-        id: depends
+      - name: Install dependencies
+        id: install_dependencies
         run: |
-          pip install customtkinter py2app tk
+          python3 -m pip install --upgrade pip
+          python3 -m pip install setuptools py2app customtkinter tk
 
       - name: Build
         id: make_build
