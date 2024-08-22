@@ -3,7 +3,6 @@ from setuptools import setup
 APP = ['koboldcpp.py']
 DATA_FILES = [
     'koboldcpp_default.so',
-    'ggml-metal-merged.metal',
     'kcpp_adapters',
     'klite.embd',
     'kcpp_docs.embd',
